@@ -1,0 +1,73 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url('backgorund_blurrr.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+.border {
+    border: 5px solid rgb(243, 247, 248);
+    width: 300px;
+    padding: 30px;
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.hello {
+    text-align: center;
+    padding-bottom: 20px;
+    color: #85acd8;
+}
+
+.name, .password {
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    box-sizing: border-box;
+}
+
+.btn {
+    margin: 20px auto 10px auto;
+    display: block;
+    color: black;
+    background-color: #a4a3e2;
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.chng {
+    text-decoration: none;
+    
+}
+
+.chngP {
+    color: #a4a3e2;
+  
+}
+
+.ACTT {
+    text-decoration: none;
+        color: green;
+}
+
+.ACT {
+
+}
+.page-logo {
+    display: block;
+    width: 150px;  
+    height: auto;   
+    margin: 0 auto 30px auto; 
+}
+
+.red_message {
+    font-size: small;
+}
