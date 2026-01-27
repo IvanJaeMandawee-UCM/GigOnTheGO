@@ -116,7 +116,7 @@ function handleAccountPage() {
         if (!user) {
             // If no user is logged in, redirect to login page
             alert('You must be logged in to view your profile.');
-            window.location.href = 'Login.html'; // Assuming login page is index.html
+            window.location.href = 'index.html'; // Assuming login page is index.html
             return;
         }
 
