@@ -138,7 +138,7 @@ function handleAccountPage() {
             logoutBtn.addEventListener('click', () => {
                 setCurrentUser(null); // Clear the session
                
-                window.location.href = 'login.html'; // Redirect to login page
+                window.location.href = 'Login.html'; // Redirect to login page
             });
         }
     }
