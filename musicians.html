@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musicians</title>
+       <link rel="icon" type="image/jpg" href="LOGO/EVENTMANAGEMENTSYSTEM.png">
+    
+    <style>
+        :root {
+            --primary-purple: #4a148c;
+            --light-purple: #7b1fa2;
+            --text-white: #ffffff;
+            --text-dark: #333333;
+            --footer-dark: #333333;
+            --body-bg: #f8f8f8;
+            --card-border: #e0e0e0;
+            --star-color: #fdd835;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--body-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: var(--primary-purple);
+            color: var(--text-white);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-white);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 5px 0;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .book-button {
+            background-color: var(--light-purple);
+            color: var(--text-white);
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .book-button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .hero {
+            background-color: var(--primary-purple);
+            padding: 100px 20px;
+            text-align: center;
+            color: var(--text-white);
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-button {
+            background-color: var(--text-white);
+            color: var(--primary-purple);
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.2s, color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-button:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .talent-profiles-section {
+            padding: 60px 20px;
+            background-color: var(--body-bg);
+            text-align: center;
+        }
+        
+        .section-heading {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--primary-purple);
+            margin-bottom: 40px;
+        }
+
+        /* Updated class name */
+        .musician-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Updated class name */
+        .musician-card {
+            background-color: var(--text-white);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: left;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+        
+        /* Updated class name */
+        .musician-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Updated class name */
+        .musician-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #cccccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-white);
+        }
+
+        /* Updated class name */
+        .musician-info {
+            padding: 15px;
+        }
+
+        /* Updated class name */
+        .musician-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        /* Updated class name */
+        .musician-genre {
+            color: var(--light-purple);
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Updated class name */
+        .musician-location {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        /* Updated class name */
+        .musician-rating {
+            font-size: 1rem;
+            color: var(--star-color);
+            margin-bottom: 10px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            text-align: left;
+        }
+        
+        .modal-overlay:target {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--text-white);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-dark);
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-purple);
+        }
+
+        .modal-image-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: var(--primary-purple);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .modal-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            margin-bottom: 5px;
+        }
+
+        .modal-genre {
+            color: var(--light-purple);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .modal-location-price {
+            font-weight: 500;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 15px;
+        }
+
+        .modal-bio-container h3 {
+            font-size: 1.2rem;
+            color: var(--primary-purple);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .modal-book-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--light-purple);
+            color: var(--text-white);
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .modal-book-btn:hover {
+            background-color: var(--primary-purple);
+        }
+
+        .footer {
+            background-color: var(--footer-dark);
+            color: var(--text-white);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .book-button {
+                margin-top: 15px;
+            }
+            .hero {
+                padding: 80px 15px;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .talent-profiles-section {
+                padding: 40px 15px;
+            }
+            .modal-content {
+                padding: 20px;
+            }
+            .modal-name {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Event Management System</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="inner.html">Home</a></li>
+                <li><a href="#">Browse Talents ▼</a></li>
+                <li><a href="#">Book a Talent</a></li>
+                <li><a href="#">Post an Event</a></li>
+                <li><a href="#">For Performers ▼</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="Account.html">Account</a></li>
+               
+            </ul>
+        </nav>
+        <a href="#" class="book-button">Book Now</a>
+    </header>
+
+    <section class="hero">
+        <h1 class="hero-title">Book Musicians and Bands for Any Occasion</h1>
+        <p class="hero-subtitle">Hire acoustic soloists, dynamic bands, DJs, and sophisticated ensembles for your event.</p>
+        <button class="hero-button">Find Your Perfect Musician</button>
+    </section>
+
+    <section class="talent-profiles-section">
+        <h2 class="section-heading">Featured Musicians</h2>
+        <div class="musician-grid">
+
+            <a class="musician-card" href="#modal-ivan-mandawe">
+                <div class="musician-image">
+                    Acoustic Placeholder
+                </div>
+                <div class="musician-info">
+                    <h3 class="musician-name">Ivan Mandawe</h3>
+                    <span class="musician-genre">Acoustic Soloist (Pop/Folk)</span>
+                    <div class="musician-rating">★★★★★ (62 Reviews)</div>
+                    <p class="musician-location">Cebu City | Starts at ₱15,000</p>
+                    <p>Smooth acoustic covers and originals, perfect for intimate settings or cafe gigs.</p>
+                </div>
+            </a>
+
+            <a class="musician-card" href="#modal-rlye-zamboangnon">
+                <div class="musician-image">
+                    Band Placeholder
+                </div>
+                <div class="musician-info">
+                    <h3 class="musician-name">Rlye Joshsua Zamboangnon</h3>
+                    <span class="musician-genre">Indie Pop Band</span>
+                    <div class="musician-rating">★★★★☆ (35 Reviews)</div>
+                    <p class="musician-location">Cebu City | Starts at ₱22,000</p>
+                    <p>A dynamic, high-energy band playing original indie pop hits and crowd-pleasing covers.</p>
+                </div>
+            </a>
+
+            <a class="musician-card" href="#modal-ryr-etulle">
+                <div class="musician-image">
+                    Ensemble Placeholder
+                </div>
+                <div class="musician-info">
+                    <h3 class="musician-name">Ryr Etulle</h3>
+                    <span class="musician-genre">Jazz Ensemble (Dinner/Lounge)</span>
+                    <div class="musician-rating">★★★★★ (48 Reviews)</div>
+                    <p class="musician-location">Zamboanga City | Request Quote</p>
+                    <p>Sophisticated jazz arrangements and smooth background music for formal events.</p>
+                </div>
+            </a>
+            
+        </div>
+    </section>
+
+    <div id="modal-ivan-mandawe" class="modal-overlay">
+        <div class="modal-content">
+            <a href="#" class="modal-close">&times;</a>
+            <div class="modal-image-placeholder">Acoustic Placeholder</div>
+            <h2 class="modal-name">Ivan Mandawe</h2>
+            <p class="modal-genre">Acoustic Soloist (Pop/Folk)</p>
+            <p class="modal-location-price">Cebu City | Starts at ₱15,000</p>
+            <div class="modal-rating">★★★★★ (62 Reviews)</div>
+            <div class="modal-bio-container">
+                <h3>About the Musician</h3>
+                <p class="modal-bio">Ivan Mandawe provides an intimate musical experience, performing contemporary hits and folk classics. His smooth vocals and skilled guitar work are ideal for weddings, restaurants, and small private parties. Easy to work with and fully self-contained with sound equipment.</p>
+            </div>
+            <a href="#" class="hero-button modal-book-btn">Book Ivan Mandawe</a>
+        </div>
+    </div>
+
+    <div id="modal-rlye-zamboangnon" class="modal-overlay">
+        <div class="modal-content">
+            <a href="#" class="modal-close">&times;</a>
+            <div class="modal-image-placeholder">Band Placeholder</div>
+            <h2 class="modal-name">Rlye Joshsua Zamboangnon</h2>
+            <p class="modal-genre">Indie Pop Band</p>
+            <p class="modal-location-price">Cebu City | Starts at ₱22,000</p>
+            <div class="modal-rating">★★★★☆ (35 Reviews)</div>
+            <div class="modal-bio-container">
+                <h3>About the Band</h3>
+                <p class="modal-bio">Rlye Joshsua Zamboangnon is a five-piece indie pop band guaranteed to get the crowd moving. Known for their catchy original songs and powerful stage presence, they are perfect for larger parties, corporate events, and music festivals. They offer a custom song list consultation before booking.</p>
+            </div>
+            <a href="#" class="hero-button modal-book-btn">Book Rlye Joshsua Zamboangnon</a>
+        </div>
+    </div>
+
+    <div id="modal-ryr-etulle" class="modal-overlay">
+        <div class="modal-content">
+            <a href="#" class="modal-close">&times;</a>
+            <div class="modal-image-placeholder">Ensemble Placeholder</div>
+            <h2 class="modal-name">Ryr Etulle</h2>
+            <p class="modal-genre">Jazz Ensemble (Dinner/Lounge)</p>
+            <p class="modal-location-price">Zamboanga City | Request Quote</p>
+            <div class="modal-rating">★★★★★ (48 Reviews)</div>
+            <div class="modal-bio-container">
+                <h3>About the Ensemble</h3>
+                <p class="modal-bio">Ryr Etulle leads a highly professional trio specializing in classic and contemporary jazz. They set the perfect sophisticated tone for upscale dinners, art gallery openings, and cocktail hours. They travel nationwide and provide a seamless, elegant musical backdrop.</p>
+            </div>
+            <a href="#" class="hero-button modal-book-btn">Book Ryr Etulle</a>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        © 2025 Gig On The Go. All rights reserved.
+    </footer>
+
+</body>
+</html>
