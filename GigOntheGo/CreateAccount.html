@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <script src="script.js" defer></script>
+ 
+    <title>Create Account</title>
+        <link rel="icon" type="image/jpg" href="LOGO/EVENTMANAGEMENTSYSTEM.png">
+     
+       <style>
+           body {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                background-image: url('backgorund_blurrr.jpg');
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                min-height: 100vh;
+                margin: 0;
+                padding-bottom: -10%;
+           }
+        .userName, .Name, .Surname, .address, .mobileNumber, .middleName, .password {
+             width: 60%;
+             padding: 10px;
+             margin: 10px auto;
+             height: 20%;
+            
+            
+             box-sizing: border-box;
+        }  
+        .text1, .text2 {
+             padding: 10px;
+             margin: 10px auto;
+             text-align: center;
+             box-sizing: border-box;
+        }
+         .border {
+           border: 10px solid rgb(243, 247, 248);
+           width: 20%;
+           padding: 30px;
+           background-color: white;
+           text-align: center;
+           border-radius: 10px;
+        }
+        .btn {
+            color: white;
+            background-color: blue;
+            width: 40%;
+            height: 40%;
+            
+        } a.confr {
+            text-decoration: none;
+            color: white;
+        } 
+        .Txt {
+            font-size: xx-small;
+            float: left;
+        } .code, .txt {
+            font-size: xx-small;
+            float: bottom;
+            padding-top: 1.5%;
+            padding-bottom: 1.5%;
+        }
+    </style>
+    
+</head>
+<body>
+    <h2 style="font: serif">Create Account</h2>
+    <div class="border">
+           
+    <input class="userName" id="userName" placeholder="Email">
+    <input class="password" id="password" placeholder="Password">
+    <input class="mobileNumber" id="mobileNumber" placeholder="Mobile number">
+    <br>
+     <input class="Name" id="Name" placeholder="First Name">
+     <br>
+      <input class="Surname" id="Surname" placeholder="Surname">
+      <input class="middleName" id="middleName" placeholder="M.I.">
+      <br>
+      <input class="address" id="address" placeholder="Address">
+      <br>
+     
+     
+      <br> 
+    <br>
+    <button class="btn"><a class="confr" href="ConfirmNewAccount.html">Confirm</a></button>
+
+    </div>
+    
+</body>
+</html>
