@@ -169,3 +169,22 @@ document.addEventListener('DOMContentLoaded', () => {
          }
     }
 });
+
+ document.addEventListener('DOMContentLoaded' () => {
+
+             if (signinBtn) {
+                     window.location.href = 'Login.html';     
+                 
+             } else if(loginBtn) {
+ 
+                   window.location.href = 'CreateAccount.html'; 
+                 
+             } else {
+                
+           alert('The System Has Need to Update, We will update further notice');     
+                 
+             }
+
+     
+ });
+
