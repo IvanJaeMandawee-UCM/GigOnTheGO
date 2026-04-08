@@ -43,7 +43,9 @@ function handleLoginPage() {
 
             const users = getStoredUsers();
             // Find user by email OR mobile number AND password
-            const user = users.find(u => (u.email.toLowerCase() === username.toLowerCase() || u.mobile === username) && u.password === password);
+            const user = users.find(u => (u.email.toLowerCase().trim() === username.toLowerCase().trim() || 
+         u.mobile.trim() === username.trim()) && 
+        u.password.trim() === password.trim());
 
             if (user) {
                 setCurrentUser(user); // Set the logged-in user in session storage
