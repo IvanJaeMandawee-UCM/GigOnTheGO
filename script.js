@@ -39,6 +39,8 @@ function handleLoginPage() {
             if (!username || !password) {
                 errorMessage.textContent = 'Please enter both email/mobile and password.';
                 return;
+            } else {
+                 window.location.href = 'inner.html';
             }
 
             const users = getStoredUsers();
