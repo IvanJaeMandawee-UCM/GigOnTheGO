@@ -36,7 +36,7 @@ function handleLoginPage() {
             const username = userNameInput.value.trim();
             const password = passwordInput.value.trim();
 
-            if (username !== userNameInput || password !== passwordInput) {
+            if (username !== userNameInput.value.trim() || password !== passwordInput.value.trim()) {
                 errorMessage.textContent = 'Please enter both email/mobile and password.';
                 alert('Invalid Username or Password');
                 return;
