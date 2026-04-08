@@ -191,22 +191,4 @@ document.addEventListener('DOMContentLoaded', () => {
  });
 
 
- document.addEventListener('DOMContentLoaded' () => {
-
-             if (passwordInput === paswordInput && userNameInput === userNameInput) {
-                     if(loginButton) {
-                      window.location.href = 'Login.html';     
-                   }
-             } else if(passwordInput !== paswordInput || userNameInput !== userNameInput) {
  
-                  alert('Invalid Username or Password');
-                 
-             } else {
-                
-           alert('The System Has Need to Update, We will update further notice');     
-                 
-             }
-
-     
- });
-
